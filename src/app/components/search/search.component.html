@@ -1,0 +1,15 @@
+<div class="row mb-5">
+  <div class="col">
+    <!-- Usamos el #term para obtener el valor del input -->
+    <input
+      #term
+      type="text"
+      (keyup)="search(term.value)"
+      class="form-control"
+      placeholder="Buscar canción"
+    />
+  </div>
+</div>
+
+<app-loading *ngIf="loading"></app-loading>
+<app-card *ngIf="!loading" [items]="tracks"></app-card>

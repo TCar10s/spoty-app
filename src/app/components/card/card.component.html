@@ -1,0 +1,49 @@
+<div class="card-columns animated fadeIn">
+  <div *ngFor="let item of items">
+    <div
+      (click)="idRoute(item)"
+      class="card puntero"
+      *ngIf="item.type == 'track'"
+    >
+      <img
+        class="card-img-top"
+        [src]="item.album.images | noimage"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ item.name | truncate: 20 }}</h5>
+        <p class="card-text">
+          <span *ngFor="let item of item.artists" class="badge badge-primary">{{
+            item.name
+          }}</span>
+          <span class="badge badge-danger"
+            >Popularity: {{ item.popularity }}/100</span
+          >
+        </p>
+      </div>
+    </div>
+
+    <div
+      (click)="idRoute(item)"
+      class="card puntero"
+      *ngIf="item.type == 'artist'"
+    >
+      <img
+        class="card-img-top"
+        [src]="item.images | noimage"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ item.name | truncate: 20 }}</h5>
+        <p class="card-text">
+          <span class="badge badge-primary"
+            >Followers: {{ item.followers.total | number }}</span
+          >
+          <span class="badge badge-danger"
+            >Popularity: {{ item.popularity }}/100</span
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
