@@ -2,10 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
-/*
-   El decorador Injectable indica que el servicio se podrá inyectar en otros
-   componentes, servicios, etc.
-*/
 @Injectable({
   providedIn: 'root',
 })
