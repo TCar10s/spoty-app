@@ -8,10 +8,11 @@ Haciendo uso de la [API de spotify](https://developer.spotify.com/documentation/
 de la petición `POST`.
 
 ```
-const headers = new HttpHeaders({
-      Authorization:
-        'Bearer ...',
-    });
+export const environment = {
+  production: false,
+  url: `https://api.spotify.com/v1/`,
+  acces_token: '',
+};
 ```
 El `access_token` generado expira cada hora.
 
