@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // Importamos el activatedRoute para saber cuál es la ruta activa.
 import { ActivatedRoute } from '@angular/router';
+import { Track } from 'src/app/services/interfaces/top-traks';
 import { SpotifyService } from '../../services/spotify.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { SpotifyService } from '../../services/spotify.service';
   styles: [],
 })
 export class SongComponent {
-  song: any = {};
+  track: Track;
   loading: boolean;
 
   constructor(private router: ActivatedRoute, private spotify: SpotifyService) {
@@ -25,7 +26,7 @@ export class SongComponent {
 
   getSong(id: string): any {
     this.spotify.getSong(id).subscribe((song) => {
-      this.song = song;
+      this.track = song;
       this.loading = false;
     });
   }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Artist } from 'src/app/services/interfaces/artist';
 import { SpotifyService } from '../../services/spotify.service';
 
 @Component({
@@ -7,19 +8,25 @@ import { SpotifyService } from '../../services/spotify.service';
   styles: [],
 })
 export class HomeComponent {
-  tracks: any[] = [];
+  artists: Artist[] = [];
   loading: boolean;
+  showAlert: boolean;
 
   constructor(private spotify: SpotifyService) {
     this.loading = true;
     this.getArtists();
   }
 
-  getArtists(): any {
-    this.spotify.getArtists().subscribe((data: any) => {
-      console.log(data);
-      this.tracks = data;
-      this.loading = false;
-    });
+  getArtists(): void {
+    this.spotify.getArtists().subscribe(
+      (artists) => {
+        this.artists = artists;
+        this.loading = false;
+      },
+      (error) => {
+        this.loading = false;
+        this.showAlert = true;
+      }
+    );
   }
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Track } from 'src/app/services/interfaces/top-traks';
 import { SpotifyService } from '../../services/spotify.service';
 
 @Component({
@@ -7,10 +8,12 @@ import { SpotifyService } from '../../services/spotify.service';
   styles: [],
 })
 export class SearchComponent {
-  tracks: any[] = [];
+  tracks: Track[];
   loading: boolean;
 
-  constructor(private spotify: SpotifyService) {}
+  constructor(private spotify: SpotifyService) {
+    this.tracks = [];
+  }
 
   search(term: string): any {
     this.loading = true;

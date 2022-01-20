@@ -1,2 +1,4 @@
 <app-loading *ngIf="loading"></app-loading>
-<app-card [items]="tracks"></app-card>
+<div *ngIf="showAlert">Provide spotify access token in environment</div>
+
+<app-card [items]="artists"></app-card>

@@ -10,7 +10,7 @@ export class CardComponent {
 
   constructor(private router: Router) {}
 
-  idRoute(item): any {
+  idRoute(item): void {
     if (item.type === 'track') {
       const songId = item.id;
       this.router.navigate(['/song', songId]);
